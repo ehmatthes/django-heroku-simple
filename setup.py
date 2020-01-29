@@ -34,6 +34,8 @@ AUTHOR = 'Eric Matthes'
 #      Is there a better default marker?
 #      Would it be better to set my own unique env var, ie DEPLOY_ENVIRONMENT?
 # DEV: This could be simplified into if-else.
+# DEV: These print statements don't show; can I log them?
+#      It's working locally, but doesn't install psycopg2 on heroku.
 print("--- Setting requirements for django-heroku-simple ---")
 print(f"  PYTHONHOME: f{os.environ.get('PYTHONHOME')}")
 if not os.environ.get('PYTHONHOME'):
@@ -54,8 +56,6 @@ else:
 print(f"  REQUIRED: {REQUIRED}")
 print("--- Finished setting required. ---")
 
-with open('my_log_file.txt', 'w') as f:
-    f.write("hello logger.")
 
 # The rest you shouldn't have to touch too much :)
 # ------------------------------------------------
