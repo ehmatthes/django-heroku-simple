@@ -33,11 +33,19 @@ AUTHOR = 'Eric Matthes'
 # DEV: How stable would this test be?
 #      Is there a better default marker?
 #      Would it be better to set my own unique env var, ie DEPLOY_ENVIRONMENT?
-if 'heroku' in os.environ.get('PYTHONHOME'):
+# DEV: This could be simplified into if-else.
+if not os.environ.get('PYTHONHOME'):
+    # Can't be heroku, assume local use and install minimal dependencies.
+    REQUIRED = [
+        'dj-database-url>=0.5.0', 'whitenoise', 'django',
+    ]
+elif 'heroku' in os.environ.get('PYTHONHOME'):
+    # Assume we're in a heroku build process.
     REQUIRED = [
         'dj-database-url>=0.5.0', 'whitenoise', 'django', 'gunicorn', 'psycopg2'
     ]
 else:
+    # User has PYTHONHOME set, but we're not in Heroku.
     REQUIRED = [
         'dj-database-url>=0.5.0', 'whitenoise', 'django',
     ]
