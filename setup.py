@@ -36,23 +36,39 @@ AUTHOR = 'Eric Matthes'
 # DEV: This could be simplified into if-else.
 # DEV: These print statements don't show; can I log them?
 #      It's working locally, but doesn't install psycopg2 on heroku.
-print("--- Setting requirements for django-heroku-simple ---")
-print(f"  PYTHONHOME: f{os.environ.get('PYTHONHOME')}")
-if not os.environ.get('PYTHONHOME'):
-    # Can't be heroku, assume local use and install minimal dependencies.
-    REQUIRED = [
-        'dj-database-url>=0.5.0', 'whitenoise', 'django',
-    ]
-elif 'heroku' in os.environ.get('PYTHONHOME'):
-    # This evaluates to True when I run it on heroku run bash; python session
-    # Maybe this is not available or set yet during initial setup?
-    # Try with a different env val set?
+# print("--- Setting requirements for django-heroku-simple ---")
+# print(f"  PYTHONHOME: f{os.environ.get('PYTHONHOME')}")
+# if not os.environ.get('PYTHONHOME'):
+#     # Can't be heroku, assume local use and install minimal dependencies.
+#     REQUIRED = [
+#         'dj-database-url>=0.5.0', 'whitenoise', 'django',
+#     ]
+# elif 'heroku' in os.environ.get('PYTHONHOME'):
+#     # This evaluates to True when I run it on heroku run bash; python session
+#     # Maybe this is not available or set yet during initial setup?
+#     # Try with a different env val set?
+#     # Assume we're in a heroku build process.
+#     REQUIRED = [
+#         'dj-database-url>=0.5.0', 'whitenoise', 'django', 'gunicorn', 'psycopg2'
+#     ]
+# elif os.environ.get('DEPLOY_ENVIRONMENT') == 'heroku':
+#     # Assume we're in a heroku build process.
+#     # DEV: Fails; can't read env vars???
+#     REQUIRED = [
+#         'dj-database-url>=0.5.0', 'whitenoise', 'django', 'gunicorn', 'psycopg2'
+#     ]
+# else:
+#     # User has PYTHONHOME set, but we're not in Heroku.
+#     REQUIRED = [
+#         'dj-database-url>=0.5.0', 'whitenoise', 'django',
+#     ]
+# print(f"  REQUIRED: {REQUIRED}")
+# print("--- Finished setting required. ---")
+
+
+if 'tmp' in os.getcwd() or 'app' in os.getcwd():
     # Assume we're in a heroku build process.
-    REQUIRED = [
-        'dj-database-url>=0.5.0', 'whitenoise', 'django', 'gunicorn', 'psycopg2'
-    ]
-elif os.environ.get('DEPLOY_ENVIRONMENT') == 'heroku':
-    # Assume we're in a heroku build process.
+    # DEV: Fails; can't read env vars???
     REQUIRED = [
         'dj-database-url>=0.5.0', 'whitenoise', 'django', 'gunicorn', 'psycopg2'
     ]
@@ -61,8 +77,6 @@ else:
     REQUIRED = [
         'dj-database-url>=0.5.0', 'whitenoise', 'django',
     ]
-print(f"  REQUIRED: {REQUIRED}")
-print("--- Finished setting required. ---")
 
 
 # The rest you shouldn't have to touch too much :)
