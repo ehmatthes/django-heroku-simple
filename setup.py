@@ -54,6 +54,9 @@ else:
 print(f"  REQUIRED: {REQUIRED}")
 print("--- Finished setting required. ---")
 
+with open('my_log_file.txt', 'w') as f:
+    f.write("hello logger.")
+
 # The rest you shouldn't have to touch too much :)
 # ------------------------------------------------
 # Except, perhaps the License and Trove Classifiers!
