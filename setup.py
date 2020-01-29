@@ -44,6 +44,14 @@ if not os.environ.get('PYTHONHOME'):
         'dj-database-url>=0.5.0', 'whitenoise', 'django',
     ]
 elif 'heroku' in os.environ.get('PYTHONHOME'):
+    # This evaluates to True when I run it on heroku run bash; python session
+    # Maybe this is not available or set yet during initial setup?
+    # Try with a different env val set?
+    # Assume we're in a heroku build process.
+    REQUIRED = [
+        'dj-database-url>=0.5.0', 'whitenoise', 'django', 'gunicorn', 'psycopg2'
+    ]
+elif os.environ.get('DEPLOY_ENVIRONMENT') == 'heroku':
     # Assume we're in a heroku build process.
     REQUIRED = [
         'dj-database-url>=0.5.0', 'whitenoise', 'django', 'gunicorn', 'psycopg2'
