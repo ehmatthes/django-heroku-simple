@@ -22,11 +22,12 @@ AUTHOR = 'Eric Matthes'
 # REQUIRED = [
 #     'dj-database-url>=0.5.0', 'whitenoise', 'psycopg2', 'django'
 # ]
+# DEV: How many of these can be moved to extras?
 REQUIRED = [
-    'dj-database-url>=0.5.0', 'whitenoise', 'django',
+    'dj-database-url>=0.5.0', 'whitenoise', 'django', 'gunicorn'
 ]
 EXTRAS_REQUIRED = [
-    'psycopg2', 'gunicorn',
+    'psycopg2'
 ]
 
 # The rest you shouldn't have to touch too much :)
