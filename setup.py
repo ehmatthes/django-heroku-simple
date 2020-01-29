@@ -34,6 +34,8 @@ AUTHOR = 'Eric Matthes'
 #      Is there a better default marker?
 #      Would it be better to set my own unique env var, ie DEPLOY_ENVIRONMENT?
 # DEV: This could be simplified into if-else.
+print("--- Setting requirements for django-heroku-simple ---")
+print(f"  PYTHONHOME: f{os.environ.get('PYTHONHOME')}")
 if not os.environ.get('PYTHONHOME'):
     # Can't be heroku, assume local use and install minimal dependencies.
     REQUIRED = [
@@ -49,6 +51,8 @@ else:
     REQUIRED = [
         'dj-database-url>=0.5.0', 'whitenoise', 'django',
     ]
+print(f"  REQUIRED: {REQUIRED}")
+print("--- Finished setting required. ---")
 
 # The rest you shouldn't have to touch too much :)
 # ------------------------------------------------
