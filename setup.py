@@ -23,12 +23,24 @@ AUTHOR = 'Eric Matthes'
 #     'dj-database-url>=0.5.0', 'whitenoise', 'psycopg2', 'django'
 # ]
 # DEV: How many of these can be moved to extras?
-REQUIRED = [
-    'dj-database-url>=0.5.0', 'whitenoise', 'django', 'gunicorn'
-]
-EXTRAS_REQUIRED = [
-    'psycopg2'
-]
+# REQUIRED = [
+#     'dj-database-url>=0.5.0', 'whitenoise', 'django', 'gunicorn'
+# ]
+# EXTRAS_REQUIRED = [
+#     'psycopg2'
+# ]
+
+# DEV: How stable would this test be?
+#      Is there a better default marker?
+#      Would it be better to set my own unique env var, ie DEPLOY_ENVIRONMENT?
+if 'heroku' in os.environ.get('PYTHONHOME'):
+    REQUIRED = [
+        'dj-database-url>=0.5.0', 'whitenoise', 'django', 'gunicorn', 'psycopg2'
+    ]
+else:
+    REQUIRED = [
+        'dj-database-url>=0.5.0', 'whitenoise', 'django',
+    ]
 
 # The rest you shouldn't have to touch too much :)
 # ------------------------------------------------
@@ -98,9 +110,9 @@ setup(
     #     'console_scripts': ['mycli=mymodule:cli'],
     # },
     install_requires=REQUIRED,
-    extra_requires = {
-        'fail_gracefully_with_no_postgres': EXTRAS_REQUIRED,
-    },
+    # extra_requires = {
+    #     'fail_gracefully_with_no_postgres': EXTRAS_REQUIRED,
+    # },
     include_package_data=True,
     license='MIT',
     classifiers=[
