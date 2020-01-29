@@ -23,10 +23,10 @@ AUTHOR = 'Eric Matthes'
 #     'dj-database-url>=0.5.0', 'whitenoise', 'psycopg2', 'django'
 # ]
 REQUIRED = [
-    'dj-database-url>=0.5.0', 'whitenoise', 'django'
+    'dj-database-url>=0.5.0', 'whitenoise', 'django',
 ]
 EXTRAS_REQUIRED = [
-    'psycopg2'
+    'psycopg2', 'gunicorn',
 ]
 
 # The rest you shouldn't have to touch too much :)
