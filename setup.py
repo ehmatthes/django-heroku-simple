@@ -13,9 +13,9 @@ from setuptools import find_packages, setup, Command
 
 # Package meta-data.
 NAME = 'django-heroku-simple'
-DESCRIPTION = 'This is a Django library for Heroku apps.'
+DESCRIPTION = 'This is a fork of django-heroku, which does not require psycopg2.'
 URL = ''
-EMAIL = ''
+EMAIL = 'ehmatthes@gmail.com'
 AUTHOR = 'Eric Matthes'
 
 # What packages are required for this module to be executed?
