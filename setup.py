@@ -12,15 +12,21 @@ from shutil import rmtree
 from setuptools import find_packages, setup, Command
 
 # Package meta-data.
-NAME = 'django-heroku'
+NAME = 'django-heroku-simple'
 DESCRIPTION = 'This is a Django library for Heroku apps.'
-URL = 'https://github.com/heroku/django-heroku'
-EMAIL = 'kreitz@salesforce.com'
-AUTHOR = 'Kenneth Reitz'
+URL = ''
+EMAIL = ''
+AUTHOR = 'Eric Matthes'
 
 # What packages are required for this module to be executed?
+# REQUIRED = [
+#     'dj-database-url>=0.5.0', 'whitenoise', 'psycopg2', 'django'
+# ]
 REQUIRED = [
-    'dj-database-url>=0.5.0', 'whitenoise', 'psycopg2', 'django'
+    'dj-database-url>=0.5.0', 'whitenoise', 'django'
+]
+EXTRAS_REQUIRED = [
+    'psycopg2'
 ]
 
 # The rest you shouldn't have to touch too much :)
@@ -91,6 +97,9 @@ setup(
     #     'console_scripts': ['mycli=mymodule:cli'],
     # },
     install_requires=REQUIRED,
+    extra_requires = {
+        'fail_gracefully_with_no_postgres': EXTRAS_REQUIRED,
+    },
     include_package_data=True,
     license='MIT',
     classifiers=[
